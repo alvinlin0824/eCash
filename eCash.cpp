@@ -96,7 +96,7 @@ int main() {
     }
 
     char choice;
-    do {
+    while(true) {
         cout << endl;
         cout << "Hello " << userID << "! Please select choices:" << endl;
         cout << "s: Store" << endl;
@@ -124,106 +124,15 @@ int main() {
             case 'q':
                 account.saveToFile();
                 account.logout();
+                return 0;
                 break;
-            default:
-                cout << "Invalid choice. Try again." << endl;
         }
-    } while (choice != 'q');
+        system("pause");
+        system("cls");
+    } 
 
     return 0;
 }
 
 
-
-// #include <iostream>
-// #include <string>
-// #include <fstream>
-// using namespace std;
-
-// class User {
-//     // Attribute
-//     private:
-//         double balance;
-//         string username;
-//     public:
-//         User(string username) {
-//             this->username = username;
-//             this->balance = 0.0;
-//         }
-//         bool login(string username) {
-//             if (this->username == username) {
-//                 return true;
-//             }
-//             return false;
-//         }
-//         void logout() {
-//             cout << "Logged out successfully." << endl;
-//         }
-//         void store(double amount) {
-//             this->balance += amount;
-//             cout << "Stored $" << amount << " successfully." << endl;
-//         }
-//         bool pay(double amount) {
-//             if (this->balance >= amount) {
-//                 this->balance -= amount;
-//                 cout << "Paid $" << amount << " successfully." << endl;
-//                 return true;
-//             }
-//             cout << "Insufficient balance." << endl;
-//             return false;
-//         }
-//         void display() {
-//             cout << "Current balance: $" << this->balance << endl;
-//         }
-// };
-
-// int main() {
-//     string username;
-//     char choice;
-
-//     cout << "Enter the account to log in and perform the following functions:" << endl;
-//     cout << "Enter 's': stored value" << endl;
-//     cout << "Type 'p': consume" << endl;
-//     cout << "Enter 'd': query balance" << endl;
-//     cout << "Type 'q': log out, and leave the program" << endl;
-
-//     User user("user");
-
-//     while (true) {
-//         cin >> choice;
-
-//         switch (choice) {
-//             case 's':
-//                 double amount;
-//                 cout << "Enter the amount to store: ";
-//                 cin >> amount;
-//                 user.store(amount);
-//                 break;
-
-//             case 'p':
-//                 double pay_amount;
-//                 cout << "Enter the amount to pay: ";
-//                 cin >> pay_amount;
-
-//                 if (user.pay(pay_amount)) {
-//                     break;
-//                 }
-
-//                 break;
-
-//             case 'd':
-//                 user.display();
-//                 break;
-
-//             case 'q':
-//                 user.logout();
-//                 return 0;
-
-//             default:
-//                 cout << "Invalid choice." << endl;
-//         }
-//     }
-
-//     return 0;
-// }
 
