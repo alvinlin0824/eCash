@@ -22,7 +22,7 @@ using namespace std;
 
 class UserAccount {
 private:
-    double moneyAvailable;
+    int moneyAvailable = 0;
     string userID;
 
 public:
@@ -44,13 +44,22 @@ public:
 
     // Store money method
     void store(double amount) {
+        if (amount >= 0){
         moneyAvailable += amount;
         cout << "eCash: You Stored $" << amount << endl;
+        } 
+        else {
+        cout << "eCash: Please enter an amount greater than 0" << endl;
+        }
     }
 
     // Pay consumption method
     bool pay(double amount) {
-        if (moneyAvailable >= amount) {
+        if (amount < 0) {
+            cout << "eCash: Please enter an amount greater than 0" << endl;
+            return false;
+        }
+        else if (moneyAvailable >= amount) {
             moneyAvailable -= amount;
             cout << "eCash: You Paid $" << amount << endl;
             return true;
